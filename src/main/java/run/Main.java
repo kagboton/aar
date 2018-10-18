@@ -21,7 +21,7 @@ public class Main {
         Compte cpt1 = new Compte(1, c1, 58200, new Date());
         Compte cpt2 = new Compte(2, c2, 6541684, new Date());
         Compte cpt3 = new Compte(3, c3, 5787, new Date());
-        Compte cpt4 = new Livret(4, c1, 891798, new Date(), 2.0);
+        Compte cpt4 = new Livret(4, c1, 891798, new Date(), 0.5);
 
 
 

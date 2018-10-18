@@ -1,12 +1,11 @@
 package beans;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 public class Livret extends Compte {
-    @Id
+
     private double tauxInteret;
 
     public Livret(long id, Client titulaire, double solde, Date dateOuverture, double tauxInteret) {

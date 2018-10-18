@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-@Inheritance(strategy= InheritanceType.JOINED)
 public class Client {
     @Id
     private long id;
