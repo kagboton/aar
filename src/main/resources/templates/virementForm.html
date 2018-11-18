@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Banque en ligne - Virement</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+    <div class="container col-sm-8">
+
+        <h3>Passer un virememt</h3>
+
+        <div th:if="${error}" class="alert alert-danger">
+            <span class="validationError" th:text="${error}"/>
+        </div>
+
+        <form method="post" th:action="@{/virement}" id="virementForm">
+            <table>
+                <tr>
+                    <td><label for="sourceId">Selectionnez un compte émetteur</label></td>
+                    <td>
+                        <select class="form-control" id="sourceId" name="sourceId" >
+                            <option selected  th:value="0">Sélection</option>
+                            <option th:each="clientCompte : ${clienrComptes}"
+                                    th:value="${clientCompte.id}"
+                                    th:text="${clientCompte.id}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td><label for="destinataireId">Selectionnez un compte bénéficiaire</label></td>
+                    <td>
+                            <select class="form-control" id="destinataireId" name="destinataireId" >
+                            <option selected  th:value="0">Sélection</option>
+                            <option th:each="compte : ${allComptes}"
+                                    th:value="${compte.id}"
+                                    th:text="${compte.id}">
+                            </option>
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td><label for="montant">Montant</label></td>
+                    <td> <input type="number" name="montant" id="montant" /></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" value="Valider"/></td>
+                    <td><a th:href="@{/menu}">Retour au Menu</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

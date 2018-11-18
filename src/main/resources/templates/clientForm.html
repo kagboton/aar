@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Banque en ligne - Retrieve Client </title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+
+    <div class="container col-sm-8">
+
+        <h3>Rechercher un client Client</h3>
+
+        <div th:if="${error}" class="alert alert-danger">
+            <span class="validationError" th:text="${error}"/>
+        </div>
+
+        <form method="post" th:action="@{/client}" th:object="${client}">
+            <div class="form-group">
+                <label for="clientId">Selectionnez un numero client :</label>
+                <select class="form-control" id="clientId" name="clientId" >
+                    <option selected  th:value="0">Choisir...</option>
+                    <option th:each="client : ${clients}"
+                            th:value="${client.id}"
+                            th:text="${client.id}">
+                    </option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-primary">Trouver</button>
+            </div>
+        </form>
+
+        <a th:href="@{/menu}">Menu</a><br/>
+
+    </div>
+
+</body>
+</html>

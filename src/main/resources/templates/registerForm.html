@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Banque en ligne - Inscription</title>
+</head>
+<body>
+    <h3>Inscription</h3>
+    <form method="post" th:action="@{/register}" th:object="${registrationForm}">
+        <table>
+            <tr>
+                <td>Login:</td>
+                <td><input type="text" th:field="*{username}" /></td>
+                <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username is required</td>
+            </tr>
+
+            <tr>
+                <td>Mot de passe:</td>
+                <td><input type="text" th:field="*{password}" /></td>
+                <td th:if="${#fields.hasErrors('password')}">Password is required</td>
+            </tr>
+
+            <tr>
+                <td>Nom:</td>
+                <td><input type="text" th:field="*{nom}" /></td>
+                <td th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Last name is required</td>
+            </tr>
+
+            <tr>
+                <td>Prénom:</td>
+                <td><input type="text" th:field="*{prenom}" /></td>
+                <td th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">First name is required</td>
+            </tr>
+
+            <tr>
+                <td>Adresse:</td>
+                <td><input type="text" th:field="*{adresse}" /></td>
+                <td th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}">Adress is required</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Register"/> <br/></td>
+                <td><a th:href="@{/login}">Login</a> </td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+</html>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Banque en ligne</title>
+</head>
+<body>
+<h3>Votre banque en ligne</h3>
+
+    <div th:if="${param.logout}" class="alert alert-success">
+        You have been logged out.
+    </div>
+
+    <div sec:authorize="isAuthenticated()">
+        <p><a th:href="@{/menu}">Menu</a></p>
+        <p><a th:href="@{/logout}">Se déconnecter</a></p>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+        <p>Veuillez vous <a  th:href="@{/login}">connecter</a> pour accéder au <a href="@{/menu}">menu</a></p>
+    </div>
+
+
+
+</body>
+</html>

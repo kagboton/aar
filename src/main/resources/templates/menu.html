@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Banque en ligne - Accueil</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container col-sm-8">
+    <h3>Menu</h3>
+    <div th:if="${message}" class="alert alert-success">
+        <span th:text="${message}"/>
+    </div>
+
+
+    <p th:text="'Bonjour, ' + ${name} + '!'" />
+
+    <a href="/clients">Liste de tous les clients</a> <br/>
+    <a href="/client">Rechercher un client</a> <br/>
+    <a href="/virement">Effectuer un virement</a> <br/><br/>
+
+
+    <form method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout"/>
+    </form>
+</div>
+</body>
+</html>
+

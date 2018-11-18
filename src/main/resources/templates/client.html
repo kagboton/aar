@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Banque en ligne - Client</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+    <div class="container col-sm-8">
+        <h3>Client retrouvé</h3>
+        <br>
+        <table class="table table-hover table-bordered">
+
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="3"><h4>Client</h4></th>
+                </tr>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Adresse</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td th:text="${client.nom}"/>
+                    <td th:text="${client.prenom}"/>
+                    <td th:text="${client.adresse}"/>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-hover table-bordered">
+
+
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="4"><h4>Comptes</h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col">Numéro de compte</th>
+                    <th scope="col">Solde</th>
+                    <th scope="col">Date d'ouverture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="compte : ${comptes}">
+                    <td th:text="${compte.id}"/>
+                    <td th:text="${compte.solde}"/>
+                    <td th:text="${compte.dateOuverture}"/>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-hover table-bordered">
+
+            <thead class="thead-light">
+            <tr>
+                <th colspan="4"><h4>Livrets</h4>
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">Numéro de compte</th>
+                <th scope="col">Solde</th>
+                <th scope="col">Date d'ouverture</th>
+                <th scope="col">Taux d'intérêt</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="livret : ${livrets}">
+                <td th:text="${livret.id}"/>
+                <td th:text="${livret.solde}"/>
+                <td th:text="${livret.dateOuverture}"/>
+                <td th:text="${livret.tauxInteret}"/>
+
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/client}">Rechercher un autre client</a><br/>
+        <a th:href="@{/menu}">Menu</a><br/>
+
+    </div>
+
+</body>
+</html>

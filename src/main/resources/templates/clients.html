@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <title>Banque en ligne - Tous les clients</title>
+</head>
+<body>
+
+
+
+    <div class="container col-sm-8">
+
+        <h3>Liste de clients</h3>
+
+        <table class="table table-hover table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Adresse</th>
+                <th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">View</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+            </tr>
+            </thead>
+            <tbody th:each="client : ${clients}">
+            <tr >
+                <th scope="row" th:text="${client.id}"/>
+                <td th:text="${client.nom}"/>
+                <td th:text="${client.prenom}"/>
+                <td th:text="${client.adresse}"/>
+                <td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a href="#">View</a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a href="#">Edit</a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a href="#">Delete</a></td>
+            </tr>
+            </tbody>
+
+        </table>
+        <a th:href="@{/menu}">Menu</a><br/>
+    </div>
+
+
+
+
+</body>
+</html>
