@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
+
 public class AbstractDaoImpl<T> implements AbstractDao<T> {
 
     /**L'entity manager pour communiquer avec la base de données*/
